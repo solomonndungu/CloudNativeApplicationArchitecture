@@ -1,7 +1,38 @@
 name: TechTrends - Package with Docker
 
+# Trigger on every push to the main branch
 on:
   push:
     branches: [ main ]
+  pull-request:
+    branches: [ main ]
 
-run: ubuntu-latest
+jobs:
+  build:
+    # Run the action on the ubuntu-latest operating system
+    runs-on: ubuntu-latest
+
+    # A sequence of steps that will run to make sure we can build and push our image
+    steps:
+      -
+        # Will reference the existing code that we have with the latest commits
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        # Will create the execution environments for our containers
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      -
+        # Will provide a more extensive interface to build our docker image
+        name: Set up Docker buildx
+        uses: docker/setup-buildx-action@v1
+
+      -
+        # Log in to DockerHub
+        name: Login to DockerHub
+        uses: docker/login-action@1
+
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
