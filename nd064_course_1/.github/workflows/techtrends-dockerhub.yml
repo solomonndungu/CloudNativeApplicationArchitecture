@@ -3,9 +3,11 @@ name: TechTrends - Package with Docker
 # Trigger on every push to the main branch
 on:
   push:
-    branches: [ main ]
+    branches:
+      - 'main'
   pull-request:
-    branches: [ main ]
+    branches:
+      - 'main'
 
 jobs:
   build:
