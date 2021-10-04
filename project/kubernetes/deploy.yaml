@@ -19,7 +19,7 @@ spec:
         app: techtrends
     spec:
       containers:
-      - image: https://hub.docker.com/repository/docker/solondungu/techtrends:latest
+      - image: solondungu/techtrends:latest
         name: techtrends
         imagePullPolicy: Always
         livenessProbe:
