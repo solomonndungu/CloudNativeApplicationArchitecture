@@ -19,7 +19,23 @@ spec:
         app: techtrends
     spec:
       containers:
-      - image: techtrends:latest
+      - image: https://hub.docker.com/repository/docker/solondungu/techtrends:latest
         name: techtrends
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 3111
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 3111
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        ports:
+          - name: liveness-port
+            containerPort: 3111
         resources: {}
 status: {}
