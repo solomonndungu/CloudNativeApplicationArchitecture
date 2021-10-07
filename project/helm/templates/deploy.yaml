@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: deployment
+metadata:
+  labels:
+    app: techtrends
+  name: techtrends
+  namespace: {{ .values.namespace.name }}
+spec:
+  replicas: {{ .values.replicaCount }}
+  selector:
+    matchLabels:
+      app: techtrends
+    strategy: {}
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: techtrends
+      spec:
+        containers:
+        - image: solondungu/techtrends:latest
+          imagePullPolicy: Always
+          name: techtrends
