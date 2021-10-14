@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: deployment
+kind: Deployment
 metadata:
   labels:
     app: techtrends
@@ -13,11 +13,28 @@ spec:
     strategy: {}
     template:
       metadata:
-        creationTimestamp: null
         labels:
           app: techtrends
       spec:
         containers:
         - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-          imagePullPolicy: Always
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           name: techtrends
+          resources: 
+            requests:
+              memory: {{ .Values.resources.requests.memory }}
+              cpu: {{ .Values.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              cpu: {{ .Values.resources.limits.cpu}}
+
+          ports:
+          - containerPort: {{ .Values.containerPort }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.livenessProbe.httpGet.path }}
+              port: {{ .Values.livenessProbe.httpGet.port }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.readinessProbe.httpGet.path }}
+              port: {{ .Values.readinessProbe.httpGet.port }}
