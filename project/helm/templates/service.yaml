@@ -6,8 +6,8 @@ metadata:
   name: techtrends
   namespace: {{ .Values.namespace.name }}
 spec:
-  ports:
-  - port: {{ .Values.service.port }}
+  service:
+    port: {{ .Values.service.port }}
     targetPort: {{ .Values.service.targetPort }}
     protocol: {{ .Values.service.protocol }}
   selector:
