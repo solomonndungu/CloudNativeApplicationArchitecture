@@ -1,0 +1,5 @@
+namespace:
+  name: techtrends-prod
+
+spec:
+  replicas: {{ .Values-prod.replicaCount }}
