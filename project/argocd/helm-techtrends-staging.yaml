@@ -6,9 +6,12 @@ spec:
   destination:
     namespace: default
     server: https://kubernetes.default.svc
-    project: default
-    source:
-      helm:
-        valueFiles:
-        - values-staging.yaml
-      path: 
+  project: default
+  source:
+    helm:
+      valueFiles:
+      - values-staging.yaml
+    path: project/helm
+    repoURL: https://github.com/solondungu/CloudNativeApplicationArchitecture
+    targetRevision: HEAD
+  syncPolicy: {}
