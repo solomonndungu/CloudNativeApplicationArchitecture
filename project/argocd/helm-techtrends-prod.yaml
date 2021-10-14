@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: techtrends
+  name: techtrends-prod
   namespace: argocd
 spec:
   destination:
@@ -13,5 +13,5 @@ spec:
       valueFiles:
       - values-prod.yaml
     path: project/helm
-    repoURL: https://github.com/solondungu/CloudNativeApplicationArchitecture
+    repoURL: https://github.com/solomonndungu/CloudNativeApplicationArchitecture
     targetRevision: HEAD
