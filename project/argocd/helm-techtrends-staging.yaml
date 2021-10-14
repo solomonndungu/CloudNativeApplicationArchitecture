@@ -14,4 +14,3 @@ spec:
       - values-staging.yaml
     path: project/helm
     repoURL: https://github.com/solomonndungu/CloudNativeApplicationArchitecture
-    targetRevision: HEAD
